@@ -30,6 +30,17 @@ body.welcome {
   text-align: center;
 }
 
+.container {
+  margin-top: 80px;
+  margin-left: 240px;
+  background-image: url('library_2.jpg');
+  background-color: #cccccc;
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 
 #edit-form1 {
   display: none;
