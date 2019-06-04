@@ -8,6 +8,7 @@ button {
     font-size: 14px;
 }
 
+
 #all-book-scripts, .ui.card, .book-title, .book-description, .book-author, #interested-books {
     margin-left: 20px;
 }
@@ -18,30 +19,34 @@ button {
 }
 
 body.welcome {
-     background-image: url('george-peabody-library.jpg');
+     background-image: url('library_2.jpg');
      background-repeat: no-repeat;
      background-size: cover;
      background-position: 4em;
+    -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+    background-size: cover;
 }
 
 
 #vertical-menubar {
   width: 200px !important;
   text-align: center;
+  background-color: rgb(118, 194, 230);
 }
 
-.container {
-  margin-top: 80px;
-  margin-left: 240px;
-  background-image: 
-  url('in.jpg');
-  background-color: #cccccc;
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-}
+// home.container {
+//   margin-top: 80px;
+//   margin-left: 240px;
+//   background-image: url('in.jpg');
+//   background-color: #cccccc;
+//   height: 500px;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   position: relative;
+// }
 
 #edit-form1 {
   display: none;
