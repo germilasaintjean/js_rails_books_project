@@ -1,0 +1,105 @@
+<div class="container">
+
+
+<%= form_for @book, :html => {:class => "ui form"}  do |f| %>
+    <div class="six wide field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: "field"%><br>
+    </div>
+    <div class="six wide field">
+      <%= f.label :category %><br>
+      <%= f.text_field :category, class: "field" %><br>
+    </div>
+    <div class="ten wide field">
+      <%= f.label :description %><br>
+      <%= f.text_area :description,  class: "field" %><br>
+    </div>
+    <%= f.hidden_field :author_id, value: @author.id %>
+    <div class="six wide field">
+      <%= f.submit "Submit" %>
+    </div>
+<%end%>
+</div>
+<p id="author-id" data-id=<%=@author.id%>></div>
+<% if @book %>
+  <p id="book-id" data-id=<%=@book.id%>></div>
+<%end%>
+
+
+
+<script type="text/javascript">
+
+
+
+    $('form').submit(submitForm)
+
+
+
+
+function submitForm(e) {
+        e.preventDefault()
+        const id = $('#author-id').attr('data-id')
+        const bookId = $('#book-id').attr('data-id')
+        let url;
+        let method;
+
+        if (bookId==="") {
+          url = '/books'
+          method = 'post'
+        } else {
+          url = `/books/${bookId}`
+          method = 'patch'
+        }
+
+        const values = $(this).serialize()
+
+        $.ajax({
+          method: method,
+          url: url,
+          data: values,
+          dataType: "json"
+        })
+        .done(function(data) {
+          const updatedBook = data
+          if (method==='post') {
+            const book = displayCard(updatedBook)
+            $("#authors-books").append(book)
+            $('form').trigger('reset')
+            $('#book-form').empty()
+
+          } else {
+            updatedBook.title ==="" ? $('.book-title').text('untitled') :   $('.book-title').text("Title: " + updatedBook.title)
+            updatedBook.category ==="" ? $('.book-category').text('untitled') :   $('.book-category').text("Category: " + updatedBook.category)
+            updatedBook.description ==="" ? $('.book-description').text('Not scripted yet') : $('.book-description').text("Synopsis: "+ updatedBook.description)
+            $('.field').val("")
+            $('form').hide()
+          }
+        });
+}
+
+
+
+
+function titleCase(title) {
+  if (title.indexOf(' ') === -1) {
+    return title.charAt(0).toUpperCase()+title.slice(1)
+  } else{
+    return title.split(" ").map( word => { return word.charAt(0).toUpperCase()+word.slice(1) }).join(" ")
+  }
+}
+
+
+function displayCard(data) {
+  const book = data
+  const title = book.title === "" ? '<em>untitled</em>' : titleCase(book.title)
+  return `<div class="card">
+    <div class="content">
+      <div class="header">
+        <a href="/books/${book.id}" class="book-link" >${title}</a>
+      </div>
+    </div>
+  </div>`
+}
+
+
+</script>

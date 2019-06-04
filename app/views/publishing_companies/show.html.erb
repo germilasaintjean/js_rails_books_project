@@ -1,0 +1,103 @@
+
+<div class="container">
+
+  <div class="welcome-container">
+
+
+  <div class="welcome-client" >
+    <h1><%= @publishing_company.username.capitalize %></h1>
+  </div>
+<br>
+<br>
+  <div class="browse-all-books">
+    <button id ="load-scripts-button" class="ui basic button">
+      <i class="book icon"></i>
+      Browse Scripts
+    </button>
+
+
+
+      <button id='interests-book-btn' data-id="<%=@publishing_company.id%>" class="ui heart button">
+        Interested Books
+      </button>
+
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<br>
+<div class="1">
+
+</div>
+<div id="book-card1" class="ui grid">
+  <div id="all-book-scripts" class="ui cards">
+
+
+  </div>
+  <br>
+</div>
+
+
+
+<br>
+<br>
+
+  <div id="book-card2" class="ui grid">
+
+    <div id="interested-books" class="ui cards">
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+$(function() {
+    $('#load-scripts-button').click(loadScriptsData)
+})
+
+function loadScriptsData() {
+    $('#interested-books').empty()
+    $('#all-book-scripts').html("<%= j render 'books/index' %>")
+
+  }
+
+$('#interests-book-btn').click(function() {
+  $.getJSON('/publishing_companies/'+ this.dataset.id +'/interests')
+    .done(interests => {
+      const interestedBooks = interests.map(interest => new Book(interest.book).renderCard())
+      $('#all-book-scripts').empty()
+      $('#interested-books').append(interestedBooks)
+    })
+})
+
+class Book {
+  constructor (attributes) {
+    this.title = attributes.title
+    this.category =  attributes.category
+    this.description =  attributes.description
+  }
+
+  renderCard() {
+    return (`
+      <div class="card">
+        <div class="content">
+          <div class="header">${this.title}</div>
+            <div class="description">
+            ${this.description}
+            </div>
+          </div>
+          <div class="ui bottom attached button">
+          <i class="mail outline icon"></i>
+          Message Author
+        </div>
+      </div>
+    `)
+  }
+}
+
+</script>

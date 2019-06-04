@@ -1,0 +1,85 @@
+
+    <% @books.each do |book| %>
+
+        <div class="ui card">
+          <div class="content">
+            <div class="header"><%= book.title.capitalize%></div>
+            <div class="meta">
+              Author:
+              <% if book.author.username %>
+                <%= book.author.username%>
+              <%else%>
+                <%= book.author.email %>
+              <%end%>
+            </div>
+
+            <div class="description" data-id=<%=book.id%>>
+              <div class="book-<%=book.id%>-desciption"></div>
+              <br>
+             <button class="more-script-info">More Info</button>
+
+              <div div='<%=book.id%>-interest-form'></div>
+            </div>
+          </div>
+          <div class="extra content"  data-id<%=book.id%>>
+
+            <span class="right floated bookmark">
+              <i class="bookmark icon" data-id<%=book.id%>></i>
+            </span>
+
+          </div>
+
+
+          <!-- start bottom-content -->
+          <div class="bottom-content">
+
+            <div class="interest">
+              <%= link_to interest_path(id: book.id), method: :post, class: 'interest-link' do %>
+
+                <div class="interest-btn text-center" book_id="<%= book.id %>">
+                  <i class="<%= book.heart_class(current_publishing_company) %>"></i>
+                </div>
+
+              <%end%>
+
+              <div id="book-<%= book.id %>-interests-message"><%= book.interests_message(current_publishing_company) %></div>
+            </div> <!-- end interest -->
+
+
+
+          </div> <!-- end bottom-content -->
+
+        </div>
+        <%end%>
+        <br><br>
+    <br>
+    <br>
+
+
+<script type="text/javascript">
+
+    $('.more-script-info').click(function() {
+        const id = $(this).parent().attr('data-id');
+        posting = $.getJSON('/books/'+id+'.json', function(book) {
+          $(`.book-${id}-desciption`).text(book.description)
+        })
+    })
+
+    $('.interest-link').click(function(e) {
+      e.stopPropagation()
+      e.preventDefault()
+      const url = $(this).attr('href')
+      const $heart = $(this).children().children()
+      const bookId = $(this).find($("div[book_id]")).attr("book_id")
+      $.ajax({
+        method: 'POST',
+        url: url,
+        dataType: 'json',
+        success: function({ heart_class, interests_message }) {
+          $heart.attr('class', heart_class)
+          $(`#book-${bookId}-interests-message`).html(interests_message)
+        }
+      })
+    })
+
+</script>
