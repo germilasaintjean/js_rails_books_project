@@ -4,17 +4,17 @@
 //     this.category = category
 //     this.description = description
 //   }
-//
+
 //   renderCard() {
 //     console.log(`Book title ${this.title}`)
 //   }
-//
+
 // }
-//
-//
+
+
 // $(function() {
-//
-//
+
+
 //   $('#test-button').click(function() {
 //     console.log('hi')
 //     const newBook = new Book('test', 'test', 'test')
@@ -25,17 +25,17 @@
 //     const html    = template(context);
 //     $('.show-card').append(html)
 //   })
-//
-//
-//
+
+
+
 // })
-// 
+
 // $('#2').click(function(e) {
 //   e.preventDefault()
 //   console.log("hi")
 //   const url = $(this).attr('action')
 //   console.log(ur)
-//
+
 //   $.ajax({
 //     method: "DELETE",
 //     url: url

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   devise_for :publishing_companies, path: 'publishing_companies'
   devise_for :authors, path: 'authors'
 

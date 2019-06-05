@@ -14,8 +14,15 @@ button {
 }
 
 .container {
-    margin-top: 80px;
-    margin-left: 240px;
+     background: url(i.jpg) no-repeat center center fixed; 
+     margin-top: 300px;
+     text-align: center;
+     margin-left: 200px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  
 }
 
 body.welcome {
@@ -33,27 +40,17 @@ body.welcome {
 #vertical-menubar {
   width: 200px !important;
   text-align: center;
-  background-color: rgb(118, 194, 230);
+  background-color: rgb(241, 175, 149);
 }
-
-// home.container {
-//   margin-top: 80px;
-//   margin-left: 240px;
-//   background-image: url('in.jpg');
-//   background-color: #cccccc;
-//   height: 500px;
-//   background-position: center;
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   position: relative;
-// }
 
 #edit-form1 {
   display: none;
 }
 
-.field {
-  text-align: left;
+.field{
+  
+  margin-top: 20px;
+  margin-left: 40px;
 }
 
 .book-img {
@@ -65,7 +62,7 @@ body.welcome {
   margin-left: 40px;
 }
 
-.welcome-client, .welcome-member, .browse-all-books, .sort-book-options, #book-search-bar, #add-book-form-box,   {
+.welcome-client, .welcome-member, .browse-all-books, .sort-book-options, #book-search-bar, #add-book-form-box{
   text-align: center;
   margin-left: -240px;
 }

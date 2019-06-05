@@ -1,14 +1,14 @@
 // $(function() {
-//
+
 //   getCurrentBooks()
-//
-//
+
+
 //   $('.ui.search.dropdown').change(function() {
 //     const searchOption= ($( ".ui.search.dropdown option:selected").text());
 //     const authorId = $('#authors-books').attr('data-id')
 //     let sortedBooks = []
 //     let title;
-//
+
 //     posting = $.getJSON('/authors/'+authorId+'/book_data')
 //     posting.done(function(data) {
 //       const books = data["books"]
@@ -24,8 +24,8 @@
 //       refreshPageWithSortBooks(authorBooks)
 //     })
 //   })
-//
-//
+
+
 //   $('.prompt').keypress(function(e) {
 //     const searchTerm = $(this).val()
 //     const authorId=$("#authors-books").attr('data-id')
@@ -47,11 +47,11 @@
 //       })
 //     }
 //   })
-//
+
 // })
-//
-//
-//
+
+
+
 // function getCurrentBooks() {
 //     const id = $('#authors-books').attr('data-id')
 //     let title;
@@ -67,27 +67,27 @@
 //         })
 //       })
 // }
-//
-//
+
+
 // function sortBookAsc(data) {
 //       return data.sort(function(a,b){
 //           return a.title.localeCompare(b.title);
 //       })
 // }
-//
+
 // function sortBookDesc(data) {
 //         return data.sort(function(a,b){
 //             return b.title.localeCompare(a.title);
 //       })
 // }
-//
+
 // function refreshPageWithSortBooks(data) {
 //     $("#authors-books").empty()
 //     data.forEach( book => {
 //       $("#authors-books").append(book)
 //     })
 // }
-//
+
 // function titleCase(title) {
 //   if (title.indexOf(' ') === -1) {
 //     return title.charAt(0).toUpperCase()+title.slice(1)
@@ -95,7 +95,7 @@
 //     return title.split(" ").map( word => { return word.charAt(0).toUpperCase()+word.slice(1) }).join(" ")
 //   }
 // }
-//
+
 // function displayCard(data) {
 //   const book = data
 //   const title = book.title === "" ? '<em>untitled</em>' : titleCase(book.title)
