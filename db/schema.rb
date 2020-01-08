@@ -32,14 +32,8 @@ ActiveRecord::Schema.define(version: 20190605161747) do
     t.index ["reset_password_token"], name: "index_authors_on_reset_password_token", unique: true
   end
 
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "category"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "author_id"
-  end
+# Could not dump table "books" because of following StandardError
+#   Unknown type 'description' for column 'synopsis'
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
